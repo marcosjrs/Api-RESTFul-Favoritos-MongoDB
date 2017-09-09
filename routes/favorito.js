@@ -8,9 +8,12 @@ var api = express.Router();
 
 
 api.get("/prueba",FavoritoController.prueba);
-// capturaría por ejemplo:   http://localhost:3000/prueba/valor1 o  http://localhost:3000/prueba/valor1/valor2...
-//pero como en app pusimos que usara /api como si fuera un prefijo, entonces quedaría http://localhost:3000/api/prueba/valor1
 api.get("/prueba/:parametro/:parametroOpcional?", FavoritoController.prueba2);
+//Rutas para Crear, leer, modificar y borrar de Favorito
+api.get("/favorito/:id",FavoritoController.getFavorito);
+api.post("/favorito/",FavoritoController.saveFavorito);
+api.put("/favorito/",FavoritoController.updateFavorito);
+api.delete("/favorito/",FavoritoController.deleteFavorito);
 
 module.exports = api;
 

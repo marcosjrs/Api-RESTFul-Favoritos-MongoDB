@@ -22,7 +22,39 @@ function prueba2  (req, resp) {
     });
 }
 
+//Crear, leer, modificar y borrar de Favorito
+
+function getFavorito(req, res){
+    var favoritoId = req.params.id;
+    res.status(200).send({
+        favorito: "datos de favorito...."
+    });
+}
+
+function saveFavorito(req, res){
+    var params = req.body;//porque lo parametros para construir el favorito no llegarán por get, será un post...
+    res.status(200).send({
+        favorito: params
+    });
+}
+function updateFavorito(req, res){
+    var params = req.body;
+    res.status(200).send({
+        favorito: params
+    });
+}
+function deleteFavorito(req, res){
+    var params = req.body;
+    res.status(200).send({
+        favorito: params
+    });
+}
+
 module.exports = {
     prueba,
-    prueba2
+    prueba2,
+    getFavorito,
+    saveFavorito,
+    updateFavorito,
+    deleteFavorito
 };
