@@ -1,7 +1,7 @@
 {
   "name": "api-resful-favoritos",
   "version": "1.0.0",
-  "description": "",
+  "description": "Una aplicación para manejar los favoritos (urls de webs)",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
@@ -14,6 +14,7 @@
     "express": "^4.15.4"
   },
   "devDependencies": {
+    "mongoose": "^4.11.10",
     "nodemon": "^1.12.0"
   }
 }

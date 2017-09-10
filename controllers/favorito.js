@@ -1,5 +1,7 @@
 'use strict'
 
+var Favorito = require("../models/favorito")
+
 //Controlador de favoritos. Utilizado por el enrutador como controlador de respuesta...
 
 function prueba (req, resp) {
@@ -32,10 +34,21 @@ function getFavorito(req, res){
 }
 
 function saveFavorito(req, res){
-    var params = req.body;//porque lo parametros para construir el favorito no llegarán por get, será un post...
-    res.status(200).send({
-        favorito: params
-    });
+    var favorito = new Favorito();//Clase creada en models, mediante un esquema de moongose en /models/favorito.js    
+    
+    var params = req.body;//Del body por venir de un post...
+    favorito.title = params.title;
+    favorito.description = params.description;
+    favorito.url = params.url;   
+
+    favorito.save(function(err,objGuardado){ 
+        if(err){
+            res.status(500).send({ message: "Error al guardar el favorito."  });
+        }else{
+            res.status(200).send({  favorito: objGuardado });
+        }
+    }); 
+    //Para ver desde consola ejecutar   use cursofavoritos  y    db.favoritos.find()    
 }
 function updateFavorito(req, res){
     var params = req.body;
