@@ -25,11 +25,29 @@ function prueba2  (req, resp) {
 }
 
 //Crear, leer, modificar y borrar de Favorito
+function getFavoritos(req, res) {
+   // Favorito.find({}, (err, favoritos) => {
+    Favorito.find({}).sort("-title").exec((err, favoritos) => {   //por title descendente....
+        if (err) {
+            res.status(500).send({ message: "Ha ocurrido un error al intentar obtener un favorito." });
+        } else if (!favoritos) {
+            res.status(404).send({ message: "No hay favoritos." });
+        } else {
+            res.status(200).send({ favoritos: favoritos });
+        }
+    });
+}
 
 function getFavorito(req, res){
     var favoritoId = req.params.id;
-    res.status(200).send({
-        favorito: "datos de favorito...."
+    Favorito.find({},(err, favoritos)=>{
+        if(err){
+            res.status(500).send({message:"Ha ocurrido un error al intentar obtener un favorito."});
+        } else if(!favoritos) {
+            res.status(404).send({ message: "No hay favoritos." });
+        } else {
+            res.status(200).send({ favoritos: favoritos });
+        }
     });
 }
 
@@ -66,6 +84,7 @@ function deleteFavorito(req, res){
 module.exports = {
     prueba,
     prueba2,
+    getFavoritos,
     getFavorito,
     saveFavorito,
     updateFavorito,

@@ -13,3 +13,4 @@ var FavoritoSchema = Schema({
 module.exports = mongoose.model('Favorito', FavoritoSchema);//Añadimos el modelo (clase) 'Favorito' a los modelos de mongoose...
 
 //Para ver desde consola ejecutar   use cursofavoritos  y    db.favoritos.find()    
+//lo de favorito en plural, lo hace mongoose, que pluraliza las entidades
