@@ -13,8 +13,8 @@ api.get("/prueba/:parametro/:parametroOpcional?", FavoritoController.prueba2);
 api.get("/favoritos/",FavoritoController.getFavoritos);
 api.get("/favorito/:id",FavoritoController.getFavorito);
 api.post("/favorito/",FavoritoController.saveFavorito);
-api.put("/favorito/",FavoritoController.updateFavorito);
-api.delete("/favorito/",FavoritoController.deleteFavorito);
+api.put("/favorito/:id",FavoritoController.updateFavorito);
+api.delete("/favorito/:id",FavoritoController.deleteFavorito);
 
 module.exports = api;
 

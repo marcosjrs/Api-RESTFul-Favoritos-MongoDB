@@ -67,10 +67,17 @@ function saveFavorito(req, res){
     //Para ver desde consola ejecutar   use cursofavoritos  y    db.favoritos.find()    
 }
 function updateFavorito(req, res){
-    var params = req.body;
-    res.status(200).send({
-        favorito: params
+    var favoritoId = req.params.id;//Id del favorito a actualizar
+    var datosActualizar = req.body;//Del body los datos a modificar por put...
+
+    Favorito.findByIdAndUpdate(favoritoId, datosActualizar, function (err, favoritoAActualizar) {
+        if (err) {
+            res.status(500).send({ message: "Error al guardar el favorito." });
+        } else {
+            res.status(200).send({ favorito_a_modificar: favoritoAActualizar }); //para coger el actualizado habría que hacer de nuevo un findById
+        }
     });
+    //Para ver desde consola ejecutar   use cursofavoritos  y    db.favoritos.find()   
 }
 function deleteFavorito(req, res){
     var params = req.body;
