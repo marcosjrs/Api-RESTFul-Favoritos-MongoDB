@@ -40,13 +40,11 @@ function getFavoritos(req, res) {
 
 function getFavorito(req, res){
     var favoritoId = req.params.id;
-    Favorito.find({},(err, favoritos)=>{
+    Favorito.findById(favoritoId,(err, favorito)=>{
         if(err){
-            res.status(500).send({message:"Ha ocurrido un error al intentar obtener un favorito."});
-        } else if(!favoritos) {
-            res.status(404).send({ message: "No hay favoritos." });
+            res.status(404).send({ message: "No se pudo devolver un favorito con el identificador: " + favoritoId });
         } else {
-            res.status(200).send({ favoritos: favoritos });
+            res.status(200).send({ favorito }); //igual que poner favorito: favorito
         }
     });
 }
