@@ -80,10 +80,15 @@ function updateFavorito(req, res){
     //Para ver desde consola ejecutar   use cursofavoritos  y    db.favoritos.find()   
 }
 function deleteFavorito(req, res){
-    var params = req.body;
-    res.status(200).send({
-        favorito: params
+    var favoritoId = req.params.id;//Id del favorito a borrar
+    Favorito.findByIdAndRemove(favoritoId,function(error, objBorrado){ // ó hacemos un findById y luego un remove (sobre el elemento, si nos devuelve un elemento..)
+        if(error){
+            res.status(500).send({message:"Error al intentar borrar el favorito con id: "+favoritoId});
+        }else{
+            res.status(200).send({ message: "Borrado el favorito con id: " + favoritoId });
+        }
     });
+    
 }
 
 module.exports = {
