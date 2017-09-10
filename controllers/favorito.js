@@ -30,10 +30,12 @@ function getFavoritos(req, res) {
     Favorito.find({}).sort("-title").exec((err, favoritos) => {   //por title descendente....
         if (err) {
             res.status(500).send({ message: "Ha ocurrido un error al intentar obtener un favorito." });
-        } else if (!favoritos) {
-            res.status(404).send({ message: "No hay favoritos." });
-        } else {
-            res.status(200).send({ favoritos: favoritos });
+        } else  {
+            if (!favoritos) {
+                res.status(404).send({ message: "No hay favoritos." });
+            } else {
+                res.status(200).send({ favoritos: favoritos });
+            }
         }
     });
 }
@@ -42,9 +44,13 @@ function getFavorito(req, res){
     var favoritoId = req.params.id;
     Favorito.findById(favoritoId,(err, favorito)=>{
         if(err){
-            res.status(404).send({ message: "No se pudo devolver un favorito con el identificador: " + favoritoId });
+            res.status(500).send({ message: "No se pudo devolver un favorito con el identificador: " + favoritoId });
         } else {
-            res.status(200).send({ favorito }); //igual que poner favorito: favorito
+            if (!favorito) {
+                res.status(404).send({ message: "No se ha encontrado un favorito con el identificador: " + favoritoId });
+            } else {
+                res.status(200).send({ favorito: favorito });
+            }
         }
     });
 }
@@ -85,7 +91,11 @@ function deleteFavorito(req, res){
         if(error){
             res.status(500).send({message:"Error al intentar borrar el favorito con id: "+favoritoId});
         }else{
-            res.status(200).send({ message: "Borrado el favorito con id: " + favoritoId });
+            if (!objBorrado) {
+                res.status(404).send({ message: "No se ha encontrado un favorito con el identificador: " + favoritoId });
+            } else {
+                res.status(200).send({ message: "Borrado el favorito con id: " + favoritoId });
+            }            
         }
     });
     
