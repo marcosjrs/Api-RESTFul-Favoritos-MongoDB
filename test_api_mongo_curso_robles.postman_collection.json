@@ -1,0 +1,138 @@
+{
+	"variables": [],
+	"info": {
+		"name": "test_api_mongo_curso_robles",
+		"_postman_id": "32e06cf3-524c-07b0-9fd1-9c5c733d040d",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all favoritos",
+			"request": {
+				"url": "http://localhost:3000/api/favoritos",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get favorito (recupera favorito)",
+			"request": {
+				"url": "http://localhost:3000/api/favorito/uno",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "post favorito (crear un favorito)",
+			"request": {
+				"url": "http://localhost:3000/api/favorito",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "url",
+							"value": "www.google.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "Google",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "El buscador más famoso",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "put favorito (actualiza favorito)",
+			"request": {
+				"url": "http://localhost:3000/api/favorito",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "página de tecnología",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.tecnologia.com",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "delete favorito (borra favorito)",
+			"request": {
+				"url": "http://localhost:3000/api/favorito",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "página de tecnología",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "url",
+							"value": "www.tecnologia.com",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
